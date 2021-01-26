@@ -1,8 +1,10 @@
 meta:
   project_name : few_shot_speaker_recognition
+
+dataset_1:
   datset_name : vctk
-  dataset:
-    number_of_speakers: 110
-    sample_size_per_speaker: 5
-    publisher: University of Edinburgh
+  number_of_speakers: 110
+  sample_size_per_speaker: 5
+  publisher: University of Edinburgh
+  data_path: ../data/vctk
   

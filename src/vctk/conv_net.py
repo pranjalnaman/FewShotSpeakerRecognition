@@ -3,6 +3,15 @@ from keras.layers import Conv2D, InputLayer, LeakyReLU, Flatten, Dense
 
 
 def get_conv_model(input_shape, output_shape) -> Sequential:
+    """
+    
+    Args:
+        input_shape:
+        output_shape:
+
+    Returns:
+
+    """
     model = Sequential()
     model.add(InputLayer(input_shape=input_shape))
     model.add(Conv2D(filters=64, kernel_size=(6, 6), strides=(2, 2), padding='valid'))

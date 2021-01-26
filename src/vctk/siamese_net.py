@@ -1,10 +1,19 @@
 from keras import Model
 from keras.layers import Dense, Input
-from few_shot_speaker_recognition.src.vctk.distance_function import distance
+
 from few_shot_speaker_recognition.src.vctk.conv_net import get_conv_model
+from few_shot_speaker_recognition.src.vctk.distance_function import distance
 
 
 def get_siamese_model(input_shape):
+    """
+
+    Args:
+        input_shape:
+
+    Returns:
+
+    """
     left_input = Input(input_shape)
     right_input = Input(input_shape)
 
