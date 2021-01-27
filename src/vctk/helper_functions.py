@@ -18,19 +18,36 @@ def flac_to_mfcc(file_path, max_pad_len=196):
     mfcc = mfcc[:, :max_pad_len]
     pad_width = max_pad_len - mfcc.shape[1]
     mfcc = np.pad(mfcc, pad_width=((0, 0), (0, pad_width)), mode='constant')
+    mfcc = np.expand_dims(mfcc, 2)
     return mfcc
 
 
-def extract_mfcc(file_path):
+def check_if_files_are_from_same_speaker(filename_1: str, filename_2: str) -> bool:
     """
 
     Args:
-        file_path:
+        filename_1:
+        filename_2:
 
     Returns:
 
     """
-    file_name = bytes.decode(file_path.numpy())
-    mfcc = tf.convert_to_tensor(flac_to_mfcc(file_name))
-    mfcc = tf.expand_dims(mfcc, 2)
-    return mfcc
+    speaker_1, speaker_2 = filename_1.split('-')[0], filename_2.split('-')[0]
+    return speaker_1 == speaker_2
+
+
+def split_X_into_left_and_right(X: list) -> tuple:
+    """
+
+    Args:
+        X:
+
+    Returns:
+
+    """
+    X_left = []
+    X_right = []
+    for entry in X:
+        X_left.append(entry[0])
+        X_right.append(entry[1])
+    return np.array(X_left), np.array(X_right)
